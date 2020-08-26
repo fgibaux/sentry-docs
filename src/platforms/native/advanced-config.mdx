@@ -1,0 +1,20 @@
+---
+title: Advanced Configuration
+---
+
+The Native SDK sets the options when you first initialize the SDK:
+
+```c
+sentry_options_t *options = sentry_options_new();
+
+sentry_options_set_environment(options, "Production");
+sentry_options_set_release(options, "5fd7a6cd");
+sentry_options_set_debug(options, 1);
+
+sentry_init(options);
+```
+
+For more information, see:
+
+- [Sentry’s complete list of Common Options across SDKs](/error-reporting/configuration/)
+- [Full documentation on Environments](/enriching-error-data/environments/)
