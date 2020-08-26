@@ -1,6 +1,7 @@
 ---
 title: Source Maps
 redirect_from:
+  - /sdks/javascript/config/sourcemaps/
   - /platforms/javascript/sourcemaps/
   - /platforms/javascript/sourcemaps/generation/
   - /platforms/javascript/sourcemaps/troubleshooting/
@@ -33,8 +34,11 @@ Webpack is a powerful build tool that resolves and bundles your JavaScript modul
 
 We have created a convenient [Webpack plugin](https://github.com/getsentry/sentry-webpack-plugin) that configures source maps and uploads them to Sentry during the build. This process is the recommended one for uploading sources to Sentry:
 
-```sh
+```shell {tabTitle:npm}
 $ npm install --save-dev @sentry/webpack-plugin
+```
+
+```shell {tabTitle:yarn}
 $ yarn add --dev @sentry/webpack-plugin
 ```
 
@@ -329,7 +333,7 @@ If your `sourceMappingURL` comment is similar to:
 
 An example `sentry-cli` command to upload these files correctly would look like this (assuming you’re in the `/scripts` directory, running your web server from one directory higher, which is why we’re using the `--url-prefix` option):
 
-```curl
+```shell
 sentry-cli releases files VERSION upload-sourcemaps . --url-prefix '~/scripts'
 ```
 
@@ -357,7 +361,7 @@ sentry-cli releases files VERSION upload-sourcemaps . --url-prefix 'http://local
 
 You can alternately [use our API](/api/releases/post-organization-release-files/) to upload artifacts, following the same naming convention explained here.
 
-```curl
+```shell
 curl -X POST \
   https://sentry.io/api/0/organizations/ORG_NAME/releases/VERSION/files/ \
   -H 'Authorization: Bearer AUTH_TOKEN' \
